@@ -5,8 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <link rel="stylesheet" href="src/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <h1>hello world</h1>
+    <div class="container">
+      <div class="weather-wrapping">
+        <div class="search-bar">
+          <form id="search-field">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="text"
+                  id="type-here"
+                  class="search"
+                  placeholder="Search for your city"
+                  autofocus="off"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="col-3">
+                <input type="submit" class="search-btn" value="Search" />
+                <span>
+                  <button class="location-btn">📍</button>
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <h1>New York</h1>
+            <ul>
+              <li>Monday, 14.22pm</li>
+              <li>Humidity: 70%, Wind: 11mph</li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <div class="temp">20°C</div>
+          </div>
+        </div>
+        <br />
+        <div class="row weekly">
+          <div class="col">
+            <p>
+              <strong> Sunday <br />21°C </strong><br />
+              10°C <br />☀️
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              <strong>Monday <br />21°C </strong>
+              <br />
+              10°C <br />☀️
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              <strong> Tuesday <br />21°C </strong><br />
+              10°C <br />☀️
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              <strong> Wednesday <br />21°C </strong><br />
+              10°C <br />☀️
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              <strong> Thursday<br />21°C </strong><br />
+              10°C <br />☀️
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/app.js"></script>
   </body>
 </html>
