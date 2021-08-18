@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="src/style.css" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div class="container">
@@ -42,49 +43,67 @@
             <h1>New York</h1>
             <ul>
               <li>Monday, 14.22pm</li>
-              <li>Humidity: 70%, Wind: 11mph</li>
+              <li>
+                Humidity: <span class="humidity-number">70%</span> Wind:
+                <span class="wind-number">11mph</span>
+              </li>
             </ul>
           </div>
           <div class="col-6">
-            <div class="temp">20°C</div>
+            <div class="temp">⛅️ 20<span class="degrees">°C</span></div>
           </div>
         </div>
         <br />
         <div class="row weekly">
           <div class="col">
             <p>
-              <strong> Sunday <br />21°C </strong><br />
-              10°C <br />☀️
+              <span class="days">Sunday </span><br /><span class="icon">🌧</span>
+              <br /><span class="max-temp">21°</span>
+              <span class="min-temp">10°</span>
             </p>
           </div>
           <div class="col">
             <p>
-              <strong>Monday <br />21°C </strong>
-              <br />
-              10°C <br />☀️
+              <span class="days">Monday </span><br /><span class="icon">🌧</span>
+              <br /><span class="max-temp">21°</span>
+              <span class="min-temp">10°</span>
             </p>
           </div>
           <div class="col">
             <p>
-              <strong> Tuesday <br />21°C </strong><br />
-              10°C <br />☀️
+              <span class="days">Tuesday</span> <br /><span class="icon"
+                >🌧</span
+              >
+              <br /><span class="max-temp">21°</span>
+              <span class="min-temp">10°</span>
             </p>
           </div>
           <div class="col">
             <p>
-              <strong> Wednesday <br />21°C </strong><br />
-              10°C <br />☀️
+              <span class="days">Wednesday</span> <br /><span class="icon"
+                >🌧</span
+              >
+              <br /><span class="max-temp">21°</span>
+              <span class="min-temp">10°</span>
             </p>
           </div>
           <div class="col">
             <p>
-              <strong> Thursday<br />21°C </strong><br />
-              10°C <br />☀️
+              <span class="days">Thursday</span><br /><span class="icon">🌧</span
+              ><br /><span class="max-temp">21°</span>
+              <span class="min-temp">10°</span>
             </p>
           </div>
         </div>
+        <footer>
+          This project was coded by Lucy Shaw and is
+          <a href="https://github.com/Pumpkin92/Vanilla-Weather-App"
+            >open-sourced on GitHub</a
+          >
+        </footer>
       </div>
     </div>
+
     <script src="src/app.js"></script>
   </body>
 </html>
