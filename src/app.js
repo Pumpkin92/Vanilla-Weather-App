@@ -32,9 +32,6 @@ function formatDate(timestamp) {
 formatDate();
 
 //api integratoin
-let apiKey = "a2e69ade2d5f80fe8dd4f0ed09576a2a";
-let city = "london";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
 /*function formatDate(timestamp) {
   let date = new date(timestamp);
@@ -46,19 +43,20 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=me
 */
 function showTemp(response) {
   console.log(response.data);
+  let cityELement = document.querySelector("#city");
   let temp = document.querySelector("#temp");
   let tempRounded = Math.round(response.data.main.temp);
-  temp.innerHTML = `${tempRounded}`;
-  console.log(response.data.main.temp);
   let windSpeed = document.querySelector("#wind-speed");
   let windRound = Math.round(response.data.wind.speed);
-  windSpeed.innerHTML = `${windRound}`;
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = response.data.main.humidity;
   let description = document.querySelector("#description");
-  description.innerHTML = response.data.weather[0].description;
   let weatherIcon = document.querySelector("#weather-icon");
   let icon = response.data.weather[0].icon;
+  cityELement.innerHTML = response.data.name;
+  temp.innerHTML = `${tempRounded}`;
+  windSpeed.innerHTML = `${windRound}`;
+  humidity.innerHTML = response.data.main.humidity;
+  description.innerHTML = response.data.weather[0].description;
   weatherIcon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -67,4 +65,20 @@ function showTemp(response) {
   dateTime.innerHTML = formatDate(response.data.dt * 100);*/
 }
 
-axios.get(`${apiUrl}`).then(showTemp);
+function search(city) {
+  let apiKey = "a2e69ade2d5f80fe8dd4f0ed09576a2a";
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  axios.get(`${apiUrl}`).then(showTemp);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#type-here");
+  search(cityInput.value);
+
+  console.log(cityInput.value);
+}
+
+let form = document.querySelector("#search-field");
+form.addEventListener("submit", handleSubmit);
