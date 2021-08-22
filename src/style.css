@@ -60,7 +60,17 @@ ul {
   font-size: 80px;
   font-weight: 700;
 }
-.degrees {
+.celsius {
+  position: relative;
+  top: -34px;
+  font-size: 28px;
+}
+.farenheight {
+  position: relative;
+  top: -34px;
+  font-size: 28px;
+}
+.divider {
   position: relative;
   top: -34px;
   font-size: 28px;
@@ -122,4 +132,9 @@ a:hover {
 }
 .description {
   text-transform: capitalize;
+}
+.temp .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
 }

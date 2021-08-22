@@ -44,16 +44,18 @@ formatDate();
 function showTemp(response) {
   console.log(response.data);
   let cityELement = document.querySelector("#city");
-  let temp = document.querySelector("#temp");
-  let tempRounded = Math.round(response.data.main.temp);
+  let tempElement = document.querySelector("#temp");
+  //let celsiusTemp = Math.round(response.data.main.temp);
   let windSpeed = document.querySelector("#wind-speed");
   let windRound = Math.round(response.data.wind.speed);
   let humidity = document.querySelector("#humidity");
   let description = document.querySelector("#description");
   let weatherIcon = document.querySelector("#weather-icon");
-  let icon = response.data.weather[0].icon;
+
+  celsiusTemp = response.data.main.temp;
+
   cityELement.innerHTML = response.data.name;
-  temp.innerHTML = `${tempRounded}`;
+  tempElement.innerHTML = Math.round(celsiusTemp);
   windSpeed.innerHTML = `${windRound}`;
   humidity.innerHTML = response.data.main.humidity;
   description.innerHTML = response.data.weather[0].description;
@@ -80,5 +82,32 @@ function handleSubmit(event) {
   console.log(cityInput.value);
 }
 
+function showFarenheight(event) {
+  event.preventDefault();
+  let farenheightTemp = (celsiusTemp * 9) / 5 + 32;
+  let temp = document.querySelector("#temp");
+  temp.innerHTML = Math.round(farenheightTemp);
+  celsiusLink.classList.remove("active");
+  farenheightLink.classList.add("active");
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  let temp = document.querySelector("#temp");
+  temp.innerHTML = Math.round(celsiusTemp);
+  celsiusLink.classList.add("active");
+  farenheightLink.classList.remove("active");
+}
+
+let celsiusTemp = null;
+
 let form = document.querySelector("#search-field");
 form.addEventListener("submit", handleSubmit);
+
+let farenheightLink = document.querySelector("#farenheight");
+farenheightLink.addEventListener("click", showFarenheight);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsius);
+
+search("manchester");
