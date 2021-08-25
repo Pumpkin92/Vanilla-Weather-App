@@ -31,6 +31,30 @@ function formatDate(timestamp) {
 }
 formatDate();
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `<div class="row weekly">`;
+  let day = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
+  day.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+              <p>
+                <span class="days">${day}</span><br /><span class="icon"
+                  >🌧</span
+                >
+                <br /><span class="max-temp">21°</span>
+                <span class="min-temp">10°</span>
+              </p>
+            </div>
+            
+`;
+    console.log(day);
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //api integratoin
 
 /*function formatDate(timestamp) {
@@ -111,3 +135,4 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCelsius);
 
 search("manchester");
+displayForecast();
