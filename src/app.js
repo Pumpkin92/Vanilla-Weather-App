@@ -31,7 +31,8 @@ function formatDate(timestamp) {
 }
 formatDate();
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row weekly">`;
   let day = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
@@ -65,6 +66,13 @@ function displayForecast() {
   return `${day}, ${hours}:${minutes}`;
 }
 */
+function getForecast(coordinates) {
+  let apiKey = "a2e69ade2d5f80fe8dd4f0ed09576a2a";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&unit=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showTemp(response) {
   console.log(response.data);
   let cityELement = document.querySelector("#city");
@@ -89,6 +97,7 @@ function showTemp(response) {
   );
   /*let dateTime = document.querySelector("#date-time");
   dateTime.innerHTML = formatDate(response.data.dt * 100);*/
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -135,4 +144,3 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCelsius);
 
 search("manchester");
-displayForecast();
