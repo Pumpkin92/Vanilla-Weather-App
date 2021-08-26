@@ -51,6 +51,9 @@ ul {
   padding: 0;
   color: #a8a6b4;
 }
+p {
+  padding-top: 50px;
+}
 .wind-number,
 .humidity-number {
   color: #f75281;

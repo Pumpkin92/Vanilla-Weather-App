@@ -33,7 +33,7 @@ formatDate();
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  console.log(response.data.daily);
+
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row weekly">`;
   let day = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
@@ -81,16 +81,6 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-//api integratoin
-
-/*function formatDate(timestamp) {
-  let date = new date(timestamp);
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  let day = date.getDay();
-  return `${day}, ${hours}:${minutes}`;
-}
-*/
 function getForecast(coordinates) {
   let apiKey = "a2e69ade2d5f80fe8dd4f0ed09576a2a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
@@ -119,8 +109,7 @@ function showTemp(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  /*let dateTime = document.querySelector("#date-time");
-  dateTime.innerHTML = formatDate(response.data.dt * 100);*/
+
   getForecast(response.data.coord);
 }
 
@@ -135,8 +124,6 @@ function handleSubmit(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#type-here");
   search(cityInput.value);
-
-  console.log(cityInput.value);
 }
 
 function showFarenheight(event) {
