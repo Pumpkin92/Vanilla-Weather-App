@@ -156,6 +156,18 @@ function showCelsius(event) {
   farenheightLink.classList.remove("active");
 }
 
+function retrievePosition(position) {
+  let apiKey = "a2e69ade2d5f80fe8dd4f0ed09576a2a";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(url).then(showTemp);
+}
+
+function getPosition() {
+  navigator.geolocation.getCurrentPosition(retrievePosition);
+}
+
 let celsiusTemp = null;
 
 let form = document.querySelector("#search-field");
@@ -166,5 +178,8 @@ farenheightLink.addEventListener("click", showFarenheight);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", showCelsius);
+
+let geoLocation = document.querySelector("#location-btn");
+geoLocation.addEventListener("click", getPosition);
 
 search("manchester");
